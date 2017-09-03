@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "529757714387",
+    "firebase_url": "https://barbers-2e98b.firebaseio.com",
+    "project_id": "barbers-2e98b",
+    "storage_bucket": "barbers-2e98b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529757714387:android:d24ba5156874ed30",
+        "android_client_info": {
+          "package_name": "com.entra.barbers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529757714387-luc1ndjdbb5sn9bj4tciak0rundc3q81.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.entra.barbers",
+            "certificate_hash": "740469a10bd1a8e9aff7ec2458360c5c6cac19ca"
+          }
+        },
+        {
+          "client_id": "529757714387-jbaqhl1372scgsvq6ro9h7pffktc14fo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQh8jvO3px-9uCupUKsdHfPOwZTQ8UH0k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529757714387-jbaqhl1372scgsvq6ro9h7pffktc14fo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
