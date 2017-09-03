@@ -1,17 +1,18 @@
 package com.entra.barbers.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by shubham on 02/09/17.
  */
 
 public class Shop implements Serializable{
-    String id, name, phone, address;
-    int seats, likes;
-    String[] services_m, services_f;
-    Review[] reviews;
-    String lat, loc;
+    private String id, name, phone, address;
+    private int seats, likes;
+    private ArrayList<Service> sevices_m, services_f;
+    private ArrayList<Review> reviews;
+    private String lat, loc;
 
     public String getId() {
         return id;
@@ -61,27 +62,27 @@ public class Shop implements Serializable{
         this.likes = likes;
     }
 
-    public String[] getServices_m() {
-        return services_m;
+    public ArrayList<Service> getSevices_m() {
+        return sevices_m;
     }
 
-    public void setServices_m(String[] services_m) {
-        this.services_m = services_m;
+    public void setSevices_m(ArrayList<Service> sevices_m) {
+        this.sevices_m = sevices_m;
     }
 
-    public String[] getServices_f() {
+    public ArrayList<Service> getServices_f() {
         return services_f;
     }
 
-    public void setServices_f(String[] services_f) {
+    public void setServices_f(ArrayList<Service> services_f) {
         this.services_f = services_f;
     }
 
-    public Review[] getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(Review[] reviews) {
+    public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
 

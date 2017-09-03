@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -84,6 +82,7 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:id="@+id/male_services_header"
             android:orientation="horizontal"
             android:weightSum="6"
             android:layout_width="match_parent"
@@ -120,7 +119,7 @@
 
         <com.github.aakira.expandablelayout.ExpandableLinearLayout
             android:id="@+id/shop_male_expandable"
-            app:ael_expanded="false"
+            app:ael_expanded="true"
             app:ael_duration="500"
             app:ael_interpolator="bounce"
             app:ael_orientation="vertical"
@@ -141,6 +140,7 @@
         </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
         <LinearLayout
+            android:id="@+id/female_services_header"
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
             android:weightSum="5"
@@ -205,11 +205,12 @@
 
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:layout_marginTop="100dp"
         android:id="@+id/shop_cart"
         app:ael_expanded="true"
         app:ael_duration="500"
         app:ael_interpolator="linear"
-        app:ael_orientation="horizontal"
+        app:ael_orientation="vertical"
         android:orientation="horizontal"
         android:background="#009900"
         android:padding="16dp"
@@ -227,16 +228,13 @@
 
 
         <TextView
+            android:id="@+id/shop_cart_next"
             android:layout_weight="3"
             android:textColor="#ffffff"
             android:gravity="right"
             android:text="Next >"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
-
-
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 

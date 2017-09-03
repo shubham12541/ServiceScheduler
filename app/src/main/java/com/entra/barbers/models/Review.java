@@ -1,11 +1,15 @@
 package com.entra.barbers.models;
 
+import java.io.Serializable;
+import java.security.Timestamp;
+
 /**
  * Created by shubham on 02/09/17.
  */
 
-public class Review {
-    String id, text, timestamp;
+public class Review implements Serializable{
+    String id, text;
+    Long timestamp;
 
     public String getId() {
         return id;
@@ -23,11 +27,11 @@ public class Review {
         this.text = text;
     }
 
-    public String getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 }

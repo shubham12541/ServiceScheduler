@@ -14,8 +14,14 @@ import android.widget.ListView;
 import com.entra.barbers.adapters.ShopListAdapter;
 import com.entra.barbers.models.Shop;
 import com.entra.barbers.utility.FirebaseUtil;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebase = new FirebaseUtil();
+        shopList = new ArrayList<>();
 
         //TODO: Fetch all shops
 
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        firebase.getShops(adapter);
+        getShops(adapter);
 
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -71,6 +78,43 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
+
+    }
+
+
+    public void getShops(final ShopListAdapter adapter){
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.d(TAG, "onChildAdded: "  + dataSnapshot.getValue());
+                Shop shop = dataSnapshot.getValue(Shop.class);
+                shopList.add(shop);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                shopList.remove(dataSnapshot.getValue(Shop.class));
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("/shops");
+        mRef.addChildEventListener(childEventListener);
 
     }
 }

@@ -1,8 +1,11 @@
 package com.entra.barbers.utility;
 
+import android.util.Log;
+
 import com.entra.barbers.adapters.ShopListAdapter;
 import com.entra.barbers.models.Shop;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +20,8 @@ import java.util.List;
  */
 
 public class FirebaseUtil {
+
+    private static final String TAG = "FirebaseUTIL";
 
     FirebaseDatabase database;
     DatabaseReference mRef;
@@ -36,39 +41,10 @@ public class FirebaseUtil {
         return mAuth;
     }
 
-    public List<Shop> getShops(final ShopListAdapter adapter){
-        final ArrayList<Shop> shops = new ArrayList<>();
-
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Shop shop = dataSnapshot.getValue(Shop.class);
-                shops.add(shop);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                shops.remove(dataSnapshot.getValue(Shop.class));
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        mRef = database.getReference("/shops");
-        return shops;
+    public FirebaseUser getUser(){
+        return mAuth.getCurrentUser();
     }
+
+
 
 }

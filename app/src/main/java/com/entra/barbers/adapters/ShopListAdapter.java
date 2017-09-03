@@ -41,16 +41,13 @@ public class ShopListAdapter extends BaseAdapter implements Filterable{
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view=convertView;
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.barber_list_item, parent, false);
-        }
+        LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.barber_list_item, parent, false);
 
         ImageView image;
         TextView name, address, likes, reviews;
@@ -64,7 +61,7 @@ public class ShopListAdapter extends BaseAdapter implements Filterable{
         name.setText(shops.get(position).getName());
         address.setText(shops.get(position).getAddress());
         likes.setText(shops.get(position).getLikes() + "");
-        reviews.setText(shops.get(position).getReviews().length + "");
+        reviews.setText(shops.get(position).getReviews().size() + "");
 
         return view;
     }

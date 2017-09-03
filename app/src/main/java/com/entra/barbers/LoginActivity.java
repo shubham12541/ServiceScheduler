@@ -76,6 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     Log.d(TAG, "onAuthStateChanged: user logged in" + user.getUid());
+                    Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(in);
+                    finish();
                 } else{
                     Log.d(TAG, "onAuthStateChanged: user signed out");
                 }
@@ -100,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
     private void submitForm(){
         if(loginEdit.getText().toString().trim().isEmpty() || !isValidPhone()){
             loginEditLayout.setError("Invalid Phone");
+            Log.d(TAG, "submitForm: " + loginEdit.getText().toString().trim() + " " + isValidPhone());
         } else{
             loginUser(loginEdit.getText().toString().trim());
             //login
@@ -107,17 +111,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String email){
-        mAuth.createUserWithEmailAndPassword(email, "123456")
+        mAuth.createUserWithEmailAndPassword("some" + email + "abc@gmail.com", "123456789")
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "onComplete: " + task.isSuccessful());
+                        Log.d(TAG, "onComplete: " + task.isSuccessful() + " " + task.getException());
 
                         if(!task.isSuccessful()){
                             Toasty.error(LoginActivity.this, "User could not be created ", Toast.LENGTH_SHORT).show();
                         } else{
                             Intent in = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(in);
+                            finish();
                         }
                     }
                 });
@@ -125,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isValidPhone(){
         String phone = loginEdit.getText().toString().trim();
-        if(phone.substring(0, 5).equals("+91-") && phone.length()==14) return true;
+        if(phone.substring(0, 4).equals("+91-") && phone.length()==14) return true;
         else return false;
     }
 
