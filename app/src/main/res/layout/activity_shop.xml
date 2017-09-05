@@ -7,15 +7,17 @@
     android:orientation="vertical"
     tools:context="com.entra.barbers.ShopActivity">
 
-
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/shop_main"
+        android:layout_marginBottom="200dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/shop_pic"
@@ -37,6 +39,14 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/shop_phone"
+            tools:text="+91-9718989213"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
             android:id="@+id/shop_address"
             tools:text="23, Sector 43, Gurgaon, Haryanak"
             android:layout_marginLeft="12dp"
@@ -50,7 +60,7 @@
             app:tickStart="16"
             app:tickInterval="1"
             app:tickEnd="40"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp" />
 
@@ -60,12 +70,14 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/shop_range_start_time"
                 android:text="8:00 AM"
                 android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/shop_range_end_time"
                 android:text="8:00 PM"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="12dp"
@@ -74,10 +86,79 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/shop_not_available_layout"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="No Slot Available for selection"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/shop_availalbe_layout"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Slot Available"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/shop_slot_start_time"
+                    tools:text="12:00 AM"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="-"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/shop_slot_end_time"
+                    tools:text="02:00 PM"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <TextView
             android:layout_margin="12dp"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="Services"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -199,45 +280,54 @@
 
         </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/shop_cart"
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/shop_cart_count"
+                tools:text="Cart(3) - 1h 25m"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/shop_cart_price"
+                tools:text="Rs 500"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/shop_cart_next"
+                android:textColor="#ffffff"
+                android:gravity="end"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Next >"
+                android:src="@drawable/next"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
+
     </ScrollView>
 
 
-    <com.github.aakira.expandablelayout.ExpandableLinearLayout
-        android:layout_marginTop="100dp"
-        android:id="@+id/shop_cart"
-        app:ael_expanded="true"
-        app:ael_duration="500"
-        app:ael_interpolator="linear"
-        app:ael_orientation="vertical"
-        android:orientation="horizontal"
-        android:background="#009900"
-        android:padding="16dp"
-        android:weightSum="4"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_weight="1"
-            tools:text="Cart: 3 items"
-            android:textColor="#ffffff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:id="@+id/shop_cart_next"
-            android:layout_weight="3"
-            android:textColor="#ffffff"
-            android:gravity="right"
-            android:text="Next >"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
 </RelativeLayout>

@@ -8,9 +8,25 @@ import java.util.ArrayList;
  */
 
 public class Order implements Serializable{
-    String orderId, userId, timestamp;
+    String orderId, userId, timestamp, startTime, endTime;
     int amount, time_mins;
     ArrayList<String> services;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
     public ArrayList<String> getServices() {
         return services;

@@ -1,10 +1,12 @@
 package com.entra.barbers.models;
 
+import java.io.Serializable;
+
 /**
  * Created by I334104 on 9/5/2017.
  */
 
-public class Booking {
+public class Booking implements Serializable {
     String startTime, endTime, bookingId, date;
 
     public String getDate() {
