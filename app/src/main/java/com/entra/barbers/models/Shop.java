@@ -13,6 +13,15 @@ public class Shop implements Serializable{
     private ArrayList<Service> sevices_m, services_f;
     private ArrayList<Review> reviews;
     private String lat, loc;
+    ArrayList<Booking> bookings;
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public String getId() {
         return id;

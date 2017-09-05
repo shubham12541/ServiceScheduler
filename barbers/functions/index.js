@@ -63,12 +63,33 @@ exports.addMockData = functions.https.onRequest((req, res) =>{
             }
         ],
         lat: "123123",
-        loc: "234343"
+        loc: "234343",
+        bookings: [
+            {
+                bookingId: '12312123123177',
+                date: '05-09-2017',
+                startTime: '1000',
+                endTime: '1200'
+            }
+        ]
+    }
+
+    const booking = {
+        bookingId: '12312123123177',
+        userId: 'temp_user',
+        startTime: '1000',
+        endTime: '1200',
+        shopId: '67a1f276-5981-47ec-8234-56218811ea98'
     }
 
     admin.database().ref('/shops').push(shop)
         .then(snap=>{
-            res.send(200, {status: true, message:"success"});
+            admin.database().ref('/bookings').push(booking)
+            .then(snap=>{
+                res.send(200, {status: false, message: "failed"});
+            }).catch(err=>{
+                res.send(200, {status: true, message: "success"});
+            });
         }).catch(err=>{
             res.send(200, {status: false, message:"failed"});
         })
