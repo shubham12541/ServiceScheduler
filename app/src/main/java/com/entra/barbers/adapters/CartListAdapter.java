@@ -53,7 +53,7 @@ public class CartListAdapter extends BaseAdapter {
 
         name.setText(cartList.get(i).getName());
         amount.setText(cartList.get(i).getPrice() + "");
-        time.setText(cartList.get(i).getTime_mins() + "");
+        time.setText(cartList.get(i).getTime_mins() + " mins");
 
         root.setClickable(false);
 

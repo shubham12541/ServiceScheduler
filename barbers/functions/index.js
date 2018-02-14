@@ -11,31 +11,41 @@ exports.addMockData = functions.https.onRequest((req, res) =>{
 
     const shop = {
         id: uuid.v4(),
-        name: "Good barber",
+        name: "Chintu Barbar",
         phone: "+91-8894121222",
-        address: "46, Sector 56, Gurgaon, Haryana",
+        address: "Huda Market, Sector 56, Gurugram, Haryana",
         seats: 1,
-        likes: 34,
+        likes: 72,
         sevices_m: [
+            {
+                name: "Hair Trimming",
+                time_mins: 15,
+                price: 70
+            },
             {
                 name: "Hair Cut",
                 time_mins: 20,
                 price: 100
             },
             {
-                name: "Shave",
-                time_mins: 15,
-                price: 50
-            },
-            {
-                name: "Massage",
+                name: "Head Massage",
                 time_mins: 30,
                 price: 150
+            },
+            {
+                name: "Shave",
+                time_mins: 30,
+                price: 80
+            },
+            {
+                name: 'Beard Trim',
+                time_mins: 20,
+                price: 50
             }
         ],
         services_f: [
             {
-                name: "Pedicure",
+                name: "Waxing",
                 time_mins: 50,
                 price: 250
             },
@@ -47,6 +57,11 @@ exports.addMockData = functions.https.onRequest((req, res) =>{
             {
                 name: "Manicure",
                 time_mins: 45,
+                price: 200
+            },
+            {
+                name: "Hair Colour",
+                time_mins: 60,
                 price: 200
             }
         ],
@@ -66,30 +81,18 @@ exports.addMockData = functions.https.onRequest((req, res) =>{
         loc: "234343",
         bookings: [
             {
-                bookingId: '12312123123177',
+                bookingId: uuid.v4(),
                 date: '05-09-2017',
-                startTime: '1000',
-                endTime: '1200'
+                endTime: '0900',
+                startTime: '0800'
             }
         ]
     }
 
-    const booking = {
-        bookingId: '12312123123177',
-        userId: 'temp_user',
-        startTime: '1000',
-        endTime: '1200',
-        shopId: '67a1f276-5981-47ec-8234-56218811ea98'
-    }
 
     admin.database().ref('/shops').push(shop)
         .then(snap=>{
-            admin.database().ref('/bookings').push(booking)
-            .then(snap=>{
-                res.send(200, {status: false, message: "failed"});
-            }).catch(err=>{
-                res.send(200, {status: true, message: "success"});
-            });
+            res.send(200, {status: true, message: "success"});
         }).catch(err=>{
             res.send(200, {status: false, message:"failed"});
         })
